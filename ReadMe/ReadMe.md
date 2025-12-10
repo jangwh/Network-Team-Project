@@ -1,0 +1,32 @@
+# Don't Nudge Me
+<img width="1194" height="663" alt="Image" src="https://github.com/user-attachments/assets/8c2e990f-8b7b-480e-9d14-6f149e5ab50c" />
+
+#  프로젝트 제목
+Don't Nudge Me [5인 개발 네트워크 프로젝트] My TIL link is https://youtu.be/mThTiganT6k
+
+## 1. 프로젝트 개요
+
+폴가이즈를 레퍼런스로 만든 3D 플랫포머 파티 게임입니다.
+
+Unity를 활용하여 3D로 제작하였습니다
+
+개발기간 : 2025.09.22 ~ 2025.10.14
+
+## 2. 주요 기능
+   
+2.1 게임시스템
+* 아웃게임-인게임-결과-아웃게임
+
+2.2 맵 설계
+* 레이싱맵, 경쟁맵 두 종류로 분리하여 설계
+
+2.3 데이터처리
+* 맵이 종료된 후 결승 씬으로 전환시에 처리
+
+## 3. 기술 스택
+   
+* C#
+* Unity
+* Fork + Github(형상 관리)
+* 포톤과 Json을 활용하여 결과 처리
+* 포톤의 룸커스텀프로퍼티를 활용
