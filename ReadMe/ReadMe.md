@@ -1,8 +1,8 @@
 # Don't Nudge Me
 <img width="1194" height="663" alt="Image" src="https://github.com/user-attachments/assets/8c2e990f-8b7b-480e-9d14-6f149e5ab50c" />
 
-#  프로젝트 제목
-Don't Nudge Me [5인 개발 네트워크 프로젝트] My TIL link is https://youtu.be/mThTiganT6k
+#  Don't Nudge Me
+[5인 개발 네트워크 프로젝트] My TIL link is https://youtu.be/mThTiganT6k
 
 ## 1. 프로젝트 개요
 
