@@ -2,7 +2,9 @@
 <img width="1194" height="663" alt="Image" src="https://github.com/user-attachments/assets/8c2e990f-8b7b-480e-9d14-6f149e5ab50c" />
 
 #  Don't Nudge Me
-[5인 개발 네트워크 프로젝트] https://youtu.be/mThTiganT6k
+[5인 개발 네트워크 프로젝트] 
+
+https://youtu.be/tT7jEDP2Mpo
 
 ## 1. 프로젝트 개요
 
