@@ -25,10 +25,10 @@ Unity를 활용하여 3D로 제작하였습니다
 룸 커스텀 프로퍼티 + RPC + PhotonNetwork 흐름 제어를 통해
 로비, 맵 선택, UI, 게임 시작을 안정적으로 동기화합니다.
 
-📌 MapChangePanel
+### 📌 MapChangePanel
 
 
-🔗 Class
+### 🔗 Class
 
 [MapChangePanel.cs](Assets/_Project/_Scripts/Main/MapChangePanel.cs)
 
@@ -63,10 +63,10 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * RPC를 통해 타 클라이언트 RoomPanel 동기화
 
-📌 RoomPanel
+### 📌 RoomPanel
 
 
-🔗 Class
+### 🔗 Class
 
 [RoomPanel.cs](Assets/_Project/_Scripts/Main/RoomPanel.cs)
 
@@ -131,9 +131,9 @@ Unity를 활용하여 3D로 제작하였습니다
 
 #### 2.2.1 인게임 플로우
 
-📌 InGame Flow Manager
+### 📌 InGame Flow Manager
 
-🔗 Class
+### 🔗 Class
 
 
 [StageManager.cs](Assets/_Project/_Scripts/Stage_Scripts/StageManager.cs)
@@ -144,9 +144,9 @@ Unity를 활용하여 3D로 제작하였습니다
 
 [ResultSceneManager.cs](Assets/_Project/_Scripts/Stage_Scripts/ResultSceneManager.cs)
 
-📌 StageManager
+### 📌 StageManager
 
-🔗 Class
+### 🔗 Class
 
 [StageManager.cs](Assets/_Project/_Scripts/Stage_Scripts/StageManager.cs)
 
@@ -185,9 +185,9 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * 원격 플레이어 : 카메라 비활성화, 관전 대상만 등록
 
-📌 RaceManager
+### 📌 RaceManager
 
-🔗 Class
+### 🔗 Class
 
 [RaceManager.cs](Assets/_Project/_Scripts/Stage_Scripts/RaceManager.cs)
 
@@ -235,9 +235,9 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * 일정 시간 후 결과 씬 이동
 
-📌 ResultSceneManager
+### 📌 ResultSceneManager
 
-🔗 Class
+### 🔗 Class
 
 
 [ResultSceneManager.cs](Assets/_Project/_Scripts/Stage_Scripts/ResultSceneManager.cs)
@@ -272,10 +272,10 @@ Unity를 활용하여 3D로 제작하였습니다
 
 #### 2.2.2 인게임 관전 시스템
 
-📌 Spectator System
+### 📌 Spectator System
 
 
-🔗 Class
+### 🔗 Class
 
 [SpectatorManager.cs](Assets/_Project/_Scripts/Stage_Scripts/SpectatorManager.cs)
 
@@ -318,9 +318,9 @@ Unity를 활용하여 3D로 제작하였습니다
 
 #### 2.3.1 체크포인트 시스템
 
-📌 CheckPoint
+### 📌 CheckPoint
 
-🔗 Class
+### 🔗 Class
 [CheckPoint.cs](Assets/_Project/_Scripts/Stage_Scripts/CheckPoint.cs)
 
 #### 역할
@@ -334,9 +334,9 @@ Unity를 활용하여 3D로 제작하였습니다
 
 #### 2.3.2 결승선 시스템
 
-📌 FinishLine
+### 📌 FinishLine
 
-🔗 Class
+### 🔗 Class
 [FinishLine.cs](Assets/_Project/_Scripts/Stage_Scripts/FinishLine.cs)
 
 #### 역할
@@ -380,9 +380,9 @@ Unity를 활용하여 3D로 제작하였습니다
 * RaceManager.RegisterFinish() 호출
 
 ### 2.3.3 장애물 시스템
-📌 FlowObstacle
+### 📌 FlowObstacle
 
-🔗 Class
+### 🔗 Class
 [FlowObstacle.cs](Assets/_Project/_Scripts/Stage_Scripts/Obstacle/FlowObstacle.cs)
 
 #### 역할
@@ -392,9 +392,9 @@ Unity를 활용하여 3D로 제작하였습니다
 * 주로 미끄럼 지형 / 흐르는 지형 표현
 
 ### 2.3.4 맵 연출 요소
-📌 WaterDoTween
+### 📌 WaterDoTween
 
-🔗 Class
+### 🔗 Class
 [WaterDoTween.cs](Assets/_Project/_Scripts/Stage_Scripts/Obstacle/WaterDoTween.cs)
 
 #### 역할
@@ -408,9 +408,9 @@ Unity를 활용하여 3D로 제작하였습니다
 * 맵 관련 데이터를 ScriptableObject 기반 구조로 관리하였습니다.
 
 #### 2.4.1 맵 정보 ScriptableObject화
-📌 StageInfo
+### 📌 StageInfo
 
-🔗 Class
+### 🔗 Class
 
 [StageInfo.cs](Assets/_Project/_Scripts/Stage_Scripts/StageInfo.cs)
 
@@ -422,9 +422,9 @@ Unity를 활용하여 3D로 제작하였습니다
 
 #### 2.4.2 스테이지 목록 관리 (StageList)
 
-📌 StageList
+### 📌 StageList
 
-🔗 Class
+### 🔗 Class
 
 [StageList.cs](Assets/_Project/_Scripts/Stage_Scripts/StageList.cs)
 
