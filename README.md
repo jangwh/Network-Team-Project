@@ -2,7 +2,7 @@
 <img width="1194" height="663" alt="Image" src="https://github.com/user-attachments/assets/8c2e990f-8b7b-480e-9d14-6f149e5ab50c" />
 
 #  Don't Nudge Me
-[5인 개발 네트워크 프로젝트] 
+5인 개발 네트워크 프로젝트 
 
 [돈넛지미 플레이 영상](https://youtu.be/tT7jEDP2Mpo)
 
@@ -103,186 +103,265 @@ Unity를 활용하여 3D로 제작하였습니다
 
 🔗 Class
 
-[StageManager.cs](Assets/_Project/_Scripts/Stage Scripts/StageManager.cs)
 
-[RaceManager.cs](Assets/_Project/_Scripts/Stage Scripts/RaceManager.cs)
+[StageManager.cs](Assets/_Project/_Scripts/Stage_Scripts/StageManager.cs)
 
-[ResultSceneManager.cs](Assets/_Project/_Scripts/Stage Scripts/ResultSceneManager.cs)
+
+[RaceManager.cs](Assets/_Project/_Scripts/Stage_Scripts/RaceManager.cs)
+
+
+[ResultSceneManager.cs](Assets/_Project/_Scripts/Stage_Scripts/ResultSceneManager.cs)
 
 📌 StageManager
 
 🔗 Class
 
-[StageManager.cs](Assets/_Project/_Scripts/Stage Scripts/StageManager.cs)
+[StageManager.cs](Assets/_Project/_Scripts/Stage_Scripts/StageManager.cs)
 
-역할
+#### 역할
 
-스테이지 단위 경기 흐름 총괄 관리
+* 스테이지 단위 경기 흐름 총괄 관리
 
-카메라 인트로 → 플레이어 스폰 → 게임 타이머 시작
+* 카메라 인트로 → 플레이어 스폰 → 게임 타이머 시작
 
-제한 시간 및 완주 인원 기준으로 경기 종료 조건 판단
+* 제한 시간 및 완주 인원 기준으로 경기 종료 조건 판단
 
-핵심 책임
+* 플레이어 스폰 위치 결정 (ActorNumber + 체크포인트 기준)
 
-플레이어 스폰 위치 결정 (ActorNumber + 체크포인트 기준)
+* 게임 제한 시간 관리
 
-게임 제한 시간 관리
+* 완주 인원 수 UI 갱신
 
-완주 인원 수 UI 갱신
+* 마스터 클라이언트 기준 경기 종료 트리거
 
-마스터 클라이언트 기준 경기 종료 트리거
+#### 인게임 흐름 요약
 
-인게임 흐름 요약
+* 스테이지 진입 시 모든 플레이어 체크포인트 초기화
 
-스테이지 진입 시 모든 플레이어 체크포인트 초기화
+* 카메라 인트로 연출 수행
 
-(비테스트 모드)
+* 연출 종료 후 플레이어 스폰
 
-카메라 인트로 연출 수행
+* 일정 시간 후 게임 타이머 시작
 
-연출 종료 후 플레이어 스폰
+* Update 루프에서 경기 종료 조건 체크 (마스터 전용)
 
-일정 시간 후 게임 타이머 시작
-
-Update 루프에서 경기 종료 조건 체크 (마스터 전용)
-
-제한 시간 초과
-
-완주 인원 ≥ 통과 인원(passPlayer)
+* 제한 시간 
 
 📌 RaceManager
 
 🔗 Class
-RaceManager.cs
 
-역할
+[RaceManager.cs](Assets/_Project/_Scripts/Stage_Scripts/RaceManager.cs)
 
-경기 전반의 결과 데이터 관리 서버 역할
+#### 역할
 
-완주/탈락(DNF) 기록 수집
+* 경기 전반의 결과 데이터 관리 서버 역할
 
-결과 데이터를 Room Custom Properties에 저장
+* 완주/탈락(DNF) 기록 수집
 
-ResultScene으로 씬 전환
+* 결과 데이터를 Room Custom Properties에 저장
 
-핵심 책임
+* ResultScene으로 씬 전환
 
-완주 순서 및 완주 시간 기록
+* 마스터 클라이언트 단일 판정 구조 유지
 
-DNF 처리 및 StageFour 전용 탈락 이벤트 처리
+* FinishedCount → UI 및 StageManager와 연계
 
-결과 JSON 직렬화 및 룸 프로퍼티 저장
-
-마스터 클라이언트 단일 판정 구조 유지
-
-네트워크 핵심 포인트
-
-마스터 클라이언트 전용 기록
-
-FinishedCount → UI 및 StageManager와 연계
-
-RaceResultsJson → ResultSceneManager에서 소비
+* RaceResultsJson → ResultSceneManager에서 소비
 
 📌 ResultSceneManager
 
 🔗 Class
-ResultSceneManager.cs
 
-역할
 
-경기 결과 씬 전용 매니저
+[ResultSceneManager.cs](Assets/_Project/_Scripts/Stage_Scripts/ResultSceneManager.cs)
 
-RaceManager가 남긴 결과 데이터를 기반으로
+#### 역할
 
-결과 UI 생성
+* 경기 결과 씬 전용 매니저
 
-캐릭터 스폰 (포디움 / 생존·탈락)
+* RaceManager가 남긴 결과 데이터를 기반으로 결과 UI 생성
 
-핵심 책임
+* 캐릭터 스폰 (포디움 / 생존·탈락)
 
-Room Custom Properties 변경 감지
+* Room Custom Properties 변경 감지 및 결과 JSON 파싱
 
-결과 JSON 파싱
+* 일정 시간 후 로비(MainScene) 복귀
 
-스테이지 타입에 따른 UI 분기 처리
+#### 결과 처리 흐름
 
-일정 시간 후 로비(MainScene) 복귀
+* RaceResultsJson 감지
 
-결과 처리 흐름
+* 결과 데이터 파싱
 
-RaceResultsJson 감지
+* 결과 UI 및 캐릭터 표시
 
-결과 데이터 파싱
+* 일정 시간 후 RaceManager 초기화 및 로비 이동
 
-스테이지 타입 판별
-
-일반 스테이지 → 랭킹 / 포디움
-
-StageFour → 생존 / 탈락
-
-결과 UI 및 캐릭터 표시
-
-일정 시간 후 RaceManager 초기화 및 로비 이동
-
-2.2.2 인게임 관전 시스템
+#### 2.2.2 인게임 관전 시스템
 
 📌 Spectator System
 
 
 🔗 Class
-SpectatorManager.cs
 
-역할
+[SpectatorManager.cs](Assets/_Project/_Scripts/Stage_Scripts/SpectatorManager.cs)
 
-경기 중 또는 완주 후 관전 모드 전환 관리
+#### 역할
 
-플레이어 카메라를 순차적으로 전환
+* 경기 중 또는 완주 후 관전 모드 전환 관리
 
-현재 관전 타겟에 따라 메인 카메라 재지정
+* 플레이어 카메라를 순차적으로 전환
 
-핵심 기능
+* 현재 관전 타겟에 따라 메인 카메라 재지정
+
+#### 핵심 기능
 ▸ 관전 대상 등록 / 제거
-AddTarget(Transform target)
-RemoveTarget(Transform target)
 
+* 플레이어 스폰 시 자동 등록
 
-플레이어 스폰 시 자동 등록
-
-파괴된 오브젝트는 자동 정리
+* 파괴된 오브젝트는 자동 정리
 
 ▸ 관전 모드 진입
-EnterSpectatorMode()
 
+* 관전 상태 진입 시 첫 타겟 설정
 
-관전 상태 진입 시 첫 타겟 설정
-
-이후 Tab 키로 관전 대상 순환
+* 이후 Tab 키로 관전 대상 순환
 
 ▸ 관전 대상 전환
-NextTarget()
 
+* Tab 입력 시 다음 플레이어로 카메라 전환
 
-Tab 입력 시 다음 플레이어로 카메라 전환
-
-현재 타겟의 카메라만 활성화
+* 현재 타겟의 카메라만 활성화
 
 ▸ StageManager 연동
-stageManager.mainCamera = currentTargetCamera;
+
+* 관전 중인 카메라를 인게임 메인 카메라로 재지정
 
 
-관전 중인 카메라를 인게임 메인 카메라로 재지정
+### 2.3 맵 시스템
 
-StageManager / StageFourManager 공통 인터페이스 사용
+* 맵 시스템은 플레이 진행 제어 요소(체크포인트 / 결승선)와 지형 기반 장애물 시스템으로 구성됩니다.
+* 플레이어의 진행 상태는 로컬에서 관리되며, 완주 판정은 마스터 클라이언트 단일 권한으로 처리됩니다.
 
-2.3 맵 시스템 
-* 장애물 설정
-* 체크포인트
-* 결승선
+#### 2.3.1 체크포인트 시스템
 
-2.4 데이터 
-* 맵 정보 S/O 화
-* Json 활용
+📌 CheckPoint
+
+🔗 Class
+[CheckPoint.cs](Assets/_Project/_Scripts/Stage_Scripts/CheckPoint.cs)
+
+#### 역할
+
+* 플레이어의 현재 진행 지점 저장
+
+* 사망 / 낙사 / 리스폰 시 복귀 위치 기준 제공
+
+* 진행 상태를 PlayerController에 반영
+
+#### 핵심 동작
+
+* CheckPoint 오브젝트마다 고유 checkpointNum 보유
+
+* Player 태그를 가진 오브젝트가 트리거 진입 시 호출
+
+* PlayerController가 내부적으로 최신 체크포인트 인덱스를 갱신
+
+#### 2.3.2 결승선 시스템
+
+📌 FinishLine
+
+🔗 Class
+[FinishLine.cs](Assets/_Project/_Scripts/Stage_Scripts/FinishLine.cs)
+
+#### 역할
+
+* 플레이어 완주 트리거
+
+* 완주 시간 및 순위 계산을 위해 마스터 클라이언트에게 완주 정보 전송
+
+* 완주 후 관전 모드 전환
+
+* 완주 처리 흐름
+
+* 로컬 플레이어만 판정
+
+* 마스터 클라이언트에게 완주 신고
+
+#### 로컬 처리
+
+* 플레이어 카메라 비활성화
+
+* 관전 모드 진입
+
+* 관전 타겟 목록에서 자신 제거
+
+* 플레이어 오브젝트 제거
+
+#### 마스터 클라이언트 처리
+
+* 완주 기록은 RaceManager 단일 관리
+
+* 순위 / 시간 계산의 신뢰성 확보
+
+* 클라이언트 간 결과 불일치 방지
+
+### 2.3.3 장애물 시스템
+📌 FlowObstacle
+
+🔗 Class
+[FlowObstacle.cs](Assets/_Project/_Scripts/Stage_Scripts/Obstacle/FlowObstacle.cs)
+
+#### 역할
+
+* 플레이어에게 지속적인 이동 힘을 가하는 지형 장애물
+
+* 주로 미끄럼 지형 / 흐르는 지형 표현
+
+### 2.3.4 맵 연출 요소
+📌 WaterDoTween
+
+🔗 Class
+[WaterDoTween.cs](Assets/_Project/_Scripts/Stage_Scripts/Obstacle/WaterDoTween.cs)
+
+#### 역할
+
+* 스테이지 환경 연출용 오브젝트 제어
+
+* DOTween을 이용한 맵 요소 동적 변화
+  
+### 2.4 데이터 관리
+
+* 맵 관련 데이터를 ScriptableObject 기반 구조로 관리하였습니다.
+
+#### 2.4.1 맵 정보 ScriptableObject화
+📌 StageInfo
+
+🔗 Class
+
+[StageInfo.cs](Assets/_Project/_Scripts/Stage_Scripts/StageInfo.cs)
+
+#### 역할
+
+* 하나의 스테이지(맵)에 대한 표시 정보와 실행 정보를 묶은 데이터 단위
+
+* UI 표시, 룸 정보 동기화, 씬 로딩의 기준 데이터
+
+#### 2.4.2 스테이지 목록 관리 (StageList)
+
+📌 StageList
+
+🔗 Class
+
+[StageList.cs](Assets/_Project/_Scripts/Stage_Scripts/StageList.cs)
+
+#### 역할
+
+* 여러 StageInfo를 배열로 관리하는 컨테이너 에셋
+
+* 맵 선택 UI 및 룸 정보 패널에서 단일 참조 포인트로 사용
+
 
 -----------------------------------------------------------
 ## 3. 플로우 차트 및 클래스 다이어그램
