@@ -53,6 +53,16 @@ Unity를 활용하여 3D로 제작하였습니다
 
 ▸ PhotonNetwork 조건 처리
 
+### 주요 메서드
+
+#### OnMapSelected(StageInfo stage)
+
+* 선택된 맵 정보를 Room Custom Property에 저장
+
+* RoomPanel UI 즉시 반영
+
+* RPC를 통해 타 클라이언트 RoomPanel 동기화
+
 📌 RoomPanel
 
 
@@ -95,6 +105,28 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * 즉각적인 UI 반영 용도
 
+### 주요 메서드
+
+#### SetStageImageByKey(string imageKey) 
+
+* StageList에서 키에 해당하는 썸네일 탐색
+
+* 존재하지 않으면 기본 이미지 적용
+
+#### OnRoomPropertiesUpdate(Hashtable changedProps)
+
+* 스테이지 이미지 / 이름 변경 감지
+
+* Room Custom Property 기반 UI 갱신
+
+#### RPC_UpdateStageImage(string imageKey)
+
+* RPC 기반 스테이지 이미지 동기화
+
+#### RPC_UpdateStageName(string stageName)
+
+* RPC 기반 맵 이름 동기화
+
 ### 2.2 인게임 시스템
 
 #### 2.2.1 인게임 플로우
@@ -133,7 +165,25 @@ Unity를 활용하여 3D로 제작하였습니다
 * 완주 인원 수 UI 갱신
 
 * 마스터 클라이언트 기준 경기 종료 트리거
-  
+
+
+### 주요 메서드
+
+#### SpawnPlayer()
+
+* ActorNumber 기반 스폰 위치 결정
+
+* 이전 체크포인트 존재 시 해당 위치로 재스폰
+
+* PhotonNetwork.Instantiate로 로컬 플레이어 생성
+
+* 카메라 및 관전 대상 등록
+
+#### SetupCameraForPlayer(GameObject newPlayer)
+
+* 로컬 플레이어 : 개인 카메라 활성화, SpectatorManager 타겟 등록
+
+* 원격 플레이어 : 카메라 비활성화, 관전 대상만 등록
 
 📌 RaceManager
 
@@ -157,6 +207,34 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * RaceResultsJson → ResultSceneManager에서 소비
 
+### 주요 메서드
+
+#### RegisterFinish(int actorNumber, float finishTime)
+
+* MasterClient 전용
+
+* 완주 순서 및 시간 기록
+
+* FinishedCount를 Room CustomProperty로 동기화
+
+#### RegisterDNF(int actorNumber, bool isStageFour)
+
+* 탈락 플레이어 등록
+
+* StageFour일 경우 DNF 전용 리스트 분리 관리
+
+* DNF 정보 CustomProperty 반영
+
+#### FinalizeRaceAndMoveScene(string sceneName, bool force)
+
+* 경기 종료 확정
+
+* 모든 결과를 FinishInfo 리스트로 구성
+
+* JSON 직렬화 → RaceResultsJson 저장
+
+* 일정 시간 후 결과 씬 이동
+
 📌 ResultSceneManager
 
 🔗 Class
@@ -176,6 +254,21 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * 일정 시간 후 로비(MainScene) 복귀
 
+### 주요 메서드
+
+#### OnRoomPropertiesUpdate(Hashtable changed)
+
+* StageFourDNF 변경 감지 → DNF 리스트 갱신
+
+* RaceResultsJson 변경 감지 → 결과 처리 시도
+
+#### TryReadResults()
+
+* RaceResultsJson 존재 여부 확인
+
+* JSON → FinishWrapper 역직렬화
+
+* 결과 UI & 캐릭터 스폰 처리
 
 #### 2.2.2 인게임 관전 시스템
 
@@ -277,6 +370,14 @@ Unity를 활용하여 3D로 제작하였습니다
 * 순위 / 시간 계산의 신뢰성 확보
 
 * 클라이언트 간 결과 불일치 방지
+
+### 주요 메서드
+
+#### RPC_ReportFinish(int actorNumber, double finishTime)
+
+* MasterClient에서 실행
+
+* RaceManager.RegisterFinish() 호출
 
 ### 2.3.3 장애물 시스템
 📌 FlowObstacle
