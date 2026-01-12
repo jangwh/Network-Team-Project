@@ -14,11 +14,60 @@ Unity를 활용하여 3D로 제작하였습니다
 
 개발기간 : 2025.09.22 ~ 2025.10.14
 
-## 2. 주요 기능
+## 2. 플로우 차트 및 클래스 다이어그램
+
+2.1 플로우차트
+
+<img width="722" height="282" alt="Image" src="https://github.com/user-attachments/assets/74548f75-e67f-494d-bff0-8168de64e45f" />
+
+--------------------------------------------------------------------------------------------------------------------
+2.2 클래스 다이어그램
+
+
+네트워크-다이어그램
+
+
+<img width="499" height="306" alt="Image" src="https://github.com/user-attachments/assets/0a21f822-0659-4867-beb6-213904c1fb42" />
+
+--------------------------------------------------------------------------------------------------------------------
+
+<img width="669" height="305" alt="Image" src="https://github.com/user-attachments/assets/ad02e14c-0c34-43c2-b52a-f9ac4b96bafc" />
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+인게임시스템-다이어그램
+
+
+<img width="754" height="275" alt="Image" src="https://github.com/user-attachments/assets/0ad05927-cafb-41d0-ae90-be1d386a1ba4" />
+
+--------------------------------------------------------------------------------------------------------------------
+
+<img width="681" height="287" alt="Image" src="https://github.com/user-attachments/assets/e6737f7e-4dec-4f81-8ea1-a48cb3ff96d9" />
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+맵시스템-다이어그램
+
+
+<img width="528" height="306" alt="Image" src="https://github.com/user-attachments/assets/6813b325-9356-4b1f-a580-6b04c8bf6d6e" />
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+데이터-다이어그램
+
+
+<img width="474" height="275" alt="Image" src="https://github.com/user-attachments/assets/eeabae0d-7e78-48b6-90b4-5a8d14de423d" />
+
+--------------------------------------------------------------------------------------------------------------------
+
+## 3. 주요 기능
    
 장우형 개발파트
 
-### 2.1 네트워크 (Photon PUN)
+### 3.1 네트워크 (Photon PUN)
 
 * 본 프로젝트는 Photon PUN을 기반으로 멀티플레이를 구성했으며, 룸 커스텀 프로퍼티 + RPC + PhotonNetwork 흐름 제어를 통해 로비, 맵 선택, UI, 게임 시작을 안정적으로 동기화합니다.
 
@@ -76,9 +125,9 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * RPC_UpdateStageName(string stageName): RPC 기반 맵 이름 동기화
 
-### 2.2 인게임 시스템
+### 3.2 인게임 시스템
 
-#### 2.2.1 인게임 플로우
+#### 3.2.1 인게임 플로우
 
 ### [StageManager.cs](Assets/_Project/_Scripts/Stage_Scripts/StageManager.cs)
 
@@ -138,7 +187,7 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * TryReadResults(): JSON 역직렬화 및 결과 UI 생성
 
-#### 2.2.2 인게임 관전 시스템
+#### 3.2.2 인게임 관전 시스템
 
 ### [SpectatorManager.cs](Assets/_Project/_Scripts/Stage_Scripts/SpectatorManager.cs)
 
@@ -150,7 +199,7 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * StageManager와 연계하여 메인 카메라 재지정
 
-### 2.3 맵 시스템
+### 3.3 맵 시스템
 
 ### [CheckPoint.cs](Assets/_Project/_Scripts/Stage_Scripts/CheckPoint.cs)
 
@@ -186,7 +235,7 @@ Unity를 활용하여 3D로 제작하였습니다
 
 * DOTween을 활용한 맵 연출 오브젝트 제어
 
-### 2.4 데이터 관리
+### 3.4 데이터 관리
 
 ### [StageInfo.cs](Assets/_Project/_Scripts/Stage_Scripts/StageInfo.cs)
 
@@ -206,54 +255,7 @@ Unity를 활용하여 3D로 제작하였습니다
 
 
 -----------------------------------------------------------
-## 3. 플로우 차트 및 클래스 다이어그램
 
-3.1 플로우차트
-
-<img width="722" height="282" alt="Image" src="https://github.com/user-attachments/assets/74548f75-e67f-494d-bff0-8168de64e45f" />
-
---------------------------------------------------------------------------------------------------------------------
-3.2 클래스 다이어그램
-
-
-네트워크-다이어그램
-
-
-<img width="499" height="306" alt="Image" src="https://github.com/user-attachments/assets/0a21f822-0659-4867-beb6-213904c1fb42" />
-
---------------------------------------------------------------------------------------------------------------------
-
-<img width="669" height="305" alt="Image" src="https://github.com/user-attachments/assets/ad02e14c-0c34-43c2-b52a-f9ac4b96bafc" />
-
---------------------------------------------------------------------------------------------------------------------
-
-
-인게임시스템-다이어그램
-
-
-<img width="754" height="275" alt="Image" src="https://github.com/user-attachments/assets/0ad05927-cafb-41d0-ae90-be1d386a1ba4" />
-
---------------------------------------------------------------------------------------------------------------------
-
-<img width="681" height="287" alt="Image" src="https://github.com/user-attachments/assets/e6737f7e-4dec-4f81-8ea1-a48cb3ff96d9" />
-
---------------------------------------------------------------------------------------------------------------------
-
-
-맵시스템-다이어그램
-
-
-<img width="528" height="306" alt="Image" src="https://github.com/user-attachments/assets/6813b325-9356-4b1f-a580-6b04c8bf6d6e" />
-
---------------------------------------------------------------------------------------------------------------------
-
-
-데이터-다이어그램
-
-
-<img width="474" height="275" alt="Image" src="https://github.com/user-attachments/assets/eeabae0d-7e78-48b6-90b4-5a8d14de423d" />
-
---------------------------------------------------------------------------------------------------------------------
 
 ## 4. 기술 스택
    
